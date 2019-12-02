@@ -37,11 +37,11 @@ jobs:
 
     - name: Check Composer Version
       run: composer -V
+      working-directory: app/.
 
     - name: Install Composer, Packages
       env:
         COMPOSER_ALLOW_SUPERUSER: 1
-        PATH: $PATH:/usr/local/bin
       run: composer install
       working-directory: app/.
 
