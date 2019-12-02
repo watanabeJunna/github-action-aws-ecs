@@ -37,9 +37,10 @@ jobs:
         COMPOSER_ALLOW_SUPERUSER: 1
         PATH: $PATH:/usr/local/bin
       run: |
+        ls -l
         apt-get update && apt-get install -y wget git unzip
-        curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-        composer install
+        # curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+        # composer install
       working-directory: /app/.
 
     - name: Build, tag, and push image to Amazon ECR
