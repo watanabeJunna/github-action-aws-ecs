@@ -32,14 +32,17 @@ jobs:
       with:
         php-version: '7.4'  
 
+    - name: Check PHP Version
+      run: php -v
+
+    - name: Check Composer Version
+      run: composer -V
+
     - name: Install Composer, Packages
       env:
         COMPOSER_ALLOW_SUPERUSER: 1
         PATH: $PATH:/usr/local/bin
-      run: |
-        apt-get update && apt-get install -y wget git unzip
-        curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-        composer install
+      run: composer install
       working-directory: app/.
 
     - name: Build, tag, and push image to Amazon ECR
