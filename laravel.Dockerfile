@@ -6,6 +6,7 @@ USER appuser
 WORKDIR /app
 
 COPY --chown=appuser:appuser ./app/ /app/.
+RUN composer install
 
 ENV TZ="Asia/Tokyo"
 
