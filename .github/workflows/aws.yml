@@ -4,7 +4,7 @@
 on:
   push:
     branches:
-      - master
+      - test-branch
 
 name: Deploy to Amazon ECS
 
@@ -12,9 +12,6 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    container:
-      image: php:latest
-
     steps:
     - name: Checkout
       uses: actions/checkout@v1
@@ -30,15 +27,14 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
+    - name: Setup PHP Action
+      uses: shivammathur/setup-php@1.5.6
+      with:
+        php-version: '7.3'
+
     - name: Install Composer, Packages
-      env:
-        COMPOSER_ALLOW_SUPERUSER: 1
-        PATH: $PATH:/usr/local/bin
-      run: |
-        apt-get update && apt-get install -y wget git unzip
-        curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-        composer install
-      working-directory: /app/.
+      run: composer install
+      working-directory: ./app
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
