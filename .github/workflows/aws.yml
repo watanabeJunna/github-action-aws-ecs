@@ -4,7 +4,7 @@
 on:
   push:
     branches:
-      - test-branch
+      - master
 
 name: Deploy to Amazon ECS
 
