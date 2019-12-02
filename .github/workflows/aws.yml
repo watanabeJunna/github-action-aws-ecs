@@ -30,20 +30,17 @@ jobs:
     - name: Setup PHP Action
       uses: shivammathur/setup-php@1.5.6
       with:
-        php-version: '7.4'  
+        php-version: '7.3'
 
     - name: Check PHP Version
       run: php -v
 
     - name: Check Composer Version
       run: composer -V
-      working-directory: app/.
 
     - name: Install Composer, Packages
-      env:
-        COMPOSER_ALLOW_SUPERUSER: 1
       run: composer install
-      working-directory: app/.
+      working-directory: ./app
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
