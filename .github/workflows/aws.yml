@@ -32,12 +32,6 @@ jobs:
       with:
         php-version: '7.3'
 
-    - name: Check PHP Version
-      run: php -v
-
-    - name: Check Composer Version
-      run: composer -V
-
     - name: Install Composer, Packages
       run: composer install
       working-directory: ./app
