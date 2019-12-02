@@ -36,6 +36,11 @@ jobs:
       run: composer install
       working-directory: ./app
 
+    - name: Prepare the application
+        run: |
+          php -r "file_exists('.env') || copy('.env.example', '.env');"
+          php artisan key:generate
+
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
