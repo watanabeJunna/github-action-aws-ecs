@@ -35,7 +35,7 @@ jobs:
     - name: Install Composer, Packages
       env:
         COMPOSER_ALLOW_SUPERUSER: 1
-        PATH: $PATH:/usr/local/bin
+        # PATH: $PATH:/usr/local/bin
       run: |
         ls -l
         apt-get update && apt-get install -y wget git unzip
