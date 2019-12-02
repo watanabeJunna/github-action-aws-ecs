@@ -19,10 +19,10 @@ USER appuser
 WORKDIR /app
 
 COPY --chown=appuser:appuser ./app/ /app/.
-RUN composer install
+# RUN composer install
 
-ENV TZ="Asia/Tokyo"
+# ENV TZ="Asia/Tokyo"
 
-EXPOSE 8000
+# EXPOSE 8000
 
-ENTRYPOINT ["php", "artisan", "serve", "--host=0.0.0.0"]
+# ENTRYPOINT ["php", "artisan", "serve", "--host=0.0.0.0"]
