@@ -36,8 +36,7 @@ jobs:
         curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
         composer install
       working-directory: /app/.
-      container:
-      image: kirschbaumdevelopment/laravel-test-runner:7.3.0
+      uses: shivammathur/setup-php@1.5.6
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
